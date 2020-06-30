@@ -1,5 +1,10 @@
 <?php
 
+if (!is_file('config.php')) {
+    echo "Please, add config.php file! It should consists $login and $api_key for your jira account.";
+    exit;
+}
+
 $loader = require __DIR__ . '/vendor/autoload.php';
 require 'config.php';
 require 'classes/sprint.php';
