@@ -1,7 +1,15 @@
 # jira-api
 Working with jira - create tasks and reports, using badoo jira api tool
 
-HOW TO USE
+HOW TO START:
+
+* Collect dependencies from composer.json
+* Add file "config.php", it should be look like:
+"<?php
+ 
+ $login = '{your login in jira}';
+ $api_key = '{your jira api key}';"
+* Script is ready to use!
 
 USAGE:
 
