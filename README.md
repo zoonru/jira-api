@@ -21,11 +21,11 @@ php api.php -a report -s 360 -t a
 
 Option list:
 
-* -a action     What action script should to do. Where are two actions - "create" or "report"
+* -a action     It's an action, that script should to do. Where are two actions - "create" or "report"
 
 -a create OPTIONS:
 
 * -k feature key                    Feature key from jira, example MAIN-15528
 * -d dev tasks count, optional      Count of dev tasks we want to create, example 1
-* -f front tasks count, optional    Count of dev tasks we want to create, example 2
+* -f front tasks count, optional    Count of front tasks we want to create, example 2
 * -s sprint id                      Sprint id from jira, example 360
