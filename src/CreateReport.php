@@ -8,11 +8,11 @@ class CreateReport
 
     }
 
-    public function report($sprint, $team_lead): void {
+    public function report(string $sprint, string $teamLead): void {
         $checked_in = [];
         //bugs
         //all features
-        $jql = "PROJECT = Main AND Sprint IN {$sprint} AND type = 'Bug' AND status != Closed AND 'Team Lead' IN {$team_lead} order by priority";
+        $jql = "PROJECT = Main AND Sprint IN {$sprint} AND type = 'Bug' AND status != Closed AND 'Team Lead' IN {$teamLead} order by priority";
         $features = array();
         $sprintBugs = \Badoo\Jira\Issue::search($jql);
 
@@ -29,7 +29,7 @@ class CreateReport
         }
 
         //all features
-        $jql = "PROJECT = Main AND Sprint IN {$sprint} AND type = 'Product Feature' AND status not in (Closed, Approval) AND 'Team Lead' IN {$team_lead} order by priority";
+        $jql = "PROJECT = Main AND Sprint IN {$sprint} AND type = 'Product Feature' AND status not in (Closed, Approval) AND 'Team Lead' IN {$teamLead} order by priority";
 
         $sprintFeatures = \Badoo\Jira\Issue::search($jql);
 
@@ -40,7 +40,7 @@ class CreateReport
             foreach($links->getLinksInward() as $ln) {
                 if ($ln->getType()->getName() == 'is-subtask-of') {
                     $issue = $ln->getInwardIssue();
-                    if (\Zoon\Jira\Sprint::isIssueInSprint($issue->getKey(), $Jira, $sprint, $team_lead)) {
+                    if (\Zoon\Jira\Sprint::isIssueInSprint($issue->getKey(), $sprint, $teamLead)) {
                         $checked_in[$issue->getKey()] = $issue->getKey();
 
                         $tasks[] = array(
@@ -65,7 +65,7 @@ class CreateReport
                 'tasks' => $tasks);
         }
 
-        $jql = "PROJECT = Main AND Sprint IN {$sprint} AND type != 'Product Feature' AND status not in (Closed, Approval) AND 'Team Lead' IN {$team_lead} order by priority";
+        $jql = "PROJECT = Main AND Sprint IN {$sprint} AND type != 'Product Feature' AND status not in (Closed, Approval) AND 'Team Lead' IN {$teamLead} order by priority";
 
         $allSprintIssues = \Badoo\Jira\Issue::search($jql);
 

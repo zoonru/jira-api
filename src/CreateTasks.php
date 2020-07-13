@@ -2,35 +2,24 @@
 
 namespace Zoon\Jira;
 
-Class Priority
-{
-    public $name;
-}
-
 class CreateTasks
 {
     public function __construct($Jira) {
 
     }
 
-    public function createTask($featureKey, $type = 'd', $new_tasks_count = 1, $sprint): array {
+    public function createTask(string $featureKey, string $type = 'd', int $new_tasks_count = 1, ?int $sprint = null): array {
         $new_tasks = array();
         $feature = new \Badoo\Jira\Issue($featureKey);
-
-        //$feature->edit('customfield_10113', array('set' => 318));
-        //$feature->save();
-        //var_dump($feature->getHistory()); exit();
-
-        //var_dump(\Badoo\Jira\User::get($feature->getFieldValue('customfield_10742')->displayName)); exit;
 
         print $feature->getKey();
         print $feature->getSummary();
 
-        if ($type == 'd') {
+        if ($type === 'd') {
             $taskType = 'Dev Task';
-        } elseif ($type == 'f') {
+        } elseif ($type === 'f') {
             $taskType = 'Front task';
-        } elseif  ($type == 'b') {
+        } elseif  ($type === 'b') {
             $taskType = 'Bug';
         } else {
             echo 'Wront type parameter: ' . $type;
