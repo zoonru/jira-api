@@ -1,5 +1,19 @@
 {
+    "name": "kamury/jira-api",
+    "description": "Cli tool for jira",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Ekaterina Demyanova"
+        }
+    ],
     "require": {
+        "php" : ">=7.3",
         "badoo/jira-client": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zoon\\Jira\\": "src/"
+        }
     }
 }

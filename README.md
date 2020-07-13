@@ -4,11 +4,13 @@ Working with jira - create tasks and reports, using badoo jira api tool
 HOW TO START:
 
 * Collect dependencies from composer.json
-* Add file "config.php", it should be look like:
-"<?php
+* Add file "config.php", it should be look like config.example.php:
+```php
+<?php
  
  $login = '{your login in jira}';
- $api_key = '{your jira api key}';"
+ $api_key = '{your jira api key}';
+```
 * Script is ready to use!
 
 USAGE:
